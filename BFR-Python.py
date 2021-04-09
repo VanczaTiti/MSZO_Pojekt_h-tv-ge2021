@@ -1,10 +1,3 @@
-#
-#   Hello World server in Python
-#   Binds REP socket to tcp://*:5555
-#   Expects b"Hello" from client, replies with b"World"
-#
-
-#import time
 import zmq
 
 context = zmq.Context()
@@ -17,7 +10,7 @@ while True:
     #print("Received request: %s" % message)
     sting=message.decode("utf-8")
     sList=sting.replace(',','.').split(";")
-    print(sList)
+    #print(sList)
     pozY=float(sList[0]) # [m]
     pozX=float(sList[1])
     velY=float(sList[2]) # [m/s]
@@ -25,24 +18,25 @@ while True:
     rot=float(sList[4]) # [deg]
     angVel=float(sList[5]) # [deg/s]
     ###########################################################################
+    
+    
 
+  
+  
     
-    cY=6000
-    pY=-60
-    pYabsX=1
-    dY=-500
-
-    pX=0.05
-    dX=0.2
+ 
     
+ 
     
-    targetRot=pX*pozX+dX*velX 
+ 
     
-    trustTarget=cY+pY*pozY+dY*velY+pYabsX*abs(pozX) #[kN]
-    engineAngleTarget=(targetRot-rot/50) # [rad] A rakéta testéhez viszonyítva
-    #trustTarget=0
-    #engineAngleTarget=0
+ 
+    
+    trustTarget=1600       #[kN]
+    engineAngleTarget=0   # [deg] A rakéta testéhez viszonyítva
+    wingAngleTarget=90    # [deg] 0-> maxra kinyitva, 90-> teljesen rásimul a testre
     ##########################################################################
-    sendStr=str(1600) +";"+ str(-angVel/60)+";"+str(0)#str((rot+115)/30)
+    sendStr=str(trustTarget) +";"+ str(engineAngleTarget/180*3.14)+";"+str(wingAngleTarget/180*3.14)
     print(sendStr)
     socket.send(str.encode(sendStr))
+    

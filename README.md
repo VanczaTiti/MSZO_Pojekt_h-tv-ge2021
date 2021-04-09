@@ -3,7 +3,7 @@
 
 A MSZO_setupot le kéne tölteni.
 
-Majd kibont egy mappát amiben lesz egy .exe file ez maga a játék, ha rá kattintotok akkor elindul.
+Majd kibont egy mappát amiben lesz egy Projekt_hetvege20201.exe file ez maga a játék, ha rá kattintotok akkor elindul.
 A játék önmagában nem irányítható kell hozzá a vele kommunikáló kód.
 A kódot külön filban (BRF-python) található azt is le kell tölteni, szerintem izgi.
 

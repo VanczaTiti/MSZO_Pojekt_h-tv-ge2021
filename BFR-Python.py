@@ -1,4 +1,5 @@
 import zmq
+import keyboard
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
@@ -39,4 +40,4 @@ while True:
     sendStr=str(trustTarget) +";"+ str(engineAngleTarget/180*3.14)+";"+str(wingAngleTarget/180*3.14)
     print(sendStr)
     socket.send(str.encode(sendStr))
-    
+    if keyboard.is_pressed('q'): break
